@@ -1,0 +1,39 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Helper function to check if user is the admin
+    function isAdmin() {
+      return request.auth != null && request.auth.token.email == 'bodamomo2010@gmail.com';
+    }
+
+    match /products/{productId} {
+      // Anyone can read products
+      allow read: if true;
+      // Only admin can create, update, or delete products
+      allow write: if isAdmin();
+    }
+    
+    match /orders/{orderId} {
+      // Anyone can create an order (checkout)
+      allow create: if true;
+      // Only admin can read, update, or delete orders
+      allow read, update, delete: if isAdmin();
+    }
+
+    match /subscribers/{subscriberId} {
+      // Anyone can subscribe
+      allow create: if true;
+      // Only admin can read, update, or delete subscribers
+      allow read, update, delete: if isAdmin();
+    }
+
+    match /coupons/{couponId} {
+      // Anyone can read coupons to validate them, and create them when subscribing
+      allow read, create: if true;
+      // Anyone can update a coupon to mark it as used
+      allow update: if true;
+      allow delete: if isAdmin();
+    }
+  }
+}

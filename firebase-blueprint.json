@@ -1,0 +1,27 @@
+{
+  "entities": {
+    "Product": {
+      "title": "Product",
+      "description": "A product in the store",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "price": { "type": "number" },
+        "category": { "type": "string" },
+        "rating": { "type": "number" },
+        "reviews": { "type": "number" },
+        "images": { "type": "array", "items": { "type": "string" } },
+        "desc": { "type": "string" },
+        "isNew": { "type": "boolean" },
+        "salePrice": { "type": "number" }
+      },
+      "required": ["name", "price", "category", "desc"]
+    }
+  },
+  "firestore": {
+    "/products/{productId}": {
+      "schema": { "$ref": "#/entities/Product" },
+      "description": "Store products"
+    }
+  }
+}

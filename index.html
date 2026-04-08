@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>المدينة المنورة | أثاث عصري فاخر</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+  <div id="nav-container"></div>
+  <div id="app" style="transition: opacity 0.3s ease;"></div>
+  <div id="footer-container"></div>
+  
+  <div class="toast-container" id="toast-container"></div>
+  
+  <div class="mini-cart-drawer" id="mini-cart">
+    <div class="mini-cart-header">
+      <h3>سلة المشتريات</h3>
+      <button class="close-modal" onclick="closeMiniCart()"><i data-lucide="x"></i></button>
+    </div>
+    <div class="mini-cart-body" id="mini-cart-items">
+      <!-- Items injected here -->
+    </div>
+    <div class="mini-cart-footer">
+      <div style="display:flex; justify-content:space-between; margin-bottom:15px; font-weight:700; font-size: 1.1rem;">
+        <span>المجموع:</span>
+        <span id="mini-cart-total">0 ج.م</span>
+      </div>
+      <button class="btn btn-primary" style="width:100%;" onclick="closeMiniCart(); navigateTo('/cart')">عرض السلة</button>
+    </div>
+  </div>
+  
+  <button class="back-to-top" id="back-to-top" onclick="window.scrollTo({top:0, behavior:'smooth'})"><i data-lucide="arrow-up"></i></button>
+
+  <script type="module" src="/app.js"></script>
+</body>
+</html>
